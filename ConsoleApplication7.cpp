@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <Windows.h>
 using namespace std;
 
@@ -21,9 +21,21 @@ void message2() {
 
 int main()
 {
-	PVOID adres = LoadLibrary(L"Kernel32.dll");
-	
-	selamcanim((LPTHREAD_START_ROUTINE)message2,adres);
+	//PVOID adres = LoadLibrary(L"Kernel32.dll");	
+	//selamcanim((LPTHREAD_START_ROUTINE)message2,adres);
+	//typedef double (*LPGETNUMBER)(double Nbr);
+	//typedef double(*LPGETNUMBER);
+	//LPGETNUMBER lpGetNumber;
+	int* lpGetNumber;
+
+	lpGetNumber = (int*)GetProcAddress(LoadLibrary(L"Kernel32.dll"), "CreateThread");
+	std::cout << lpGetNumber <<"\n";
+	std::cout << typeid(lpGetNumber).name() << "\n";
+
+	selamcanim((LPTHREAD_START_ROUTINE)message2, lpGetNumber);
+
+
+
 	//selamcanim((LPTHREAD_START_ROUTINE)message2,adres);
 
 	//int k;
