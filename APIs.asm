@@ -12,17 +12,15 @@ cagri    DD 55
 MySegment segment read execute
 
 _selamcanim proc
-	
 
-	push ebp
-	mov ebp,esp
-
-	;pop eax          ; buraya girince stack içine return değeri pushlanıyor ama benim stackle işim var 
+	;pop eax          ; buraya girince stack içine return değeri pushlanıyor ama stackle işimiz var 
 	;mov donus,eax		; o yüzden geçici olarak ecx içine alıyorum en son tekrar pushluyorum
 
+	push ebp          ;PROLOG !!!
+	mov ebp,esp
 MyFunc:
     	mov eax,[ebp+12]
-	;add eax,124E4h    ; Kernel32.dll base adresindenden sonra bu değer eklenince CreateThread API elde ediliyor
+	;add eax,124E4h    		; Kernel32.dll base adresindenden sonra bu değer eklenince CreateThread API elde ediliyor
 	mov dword ptr [cagri],eax
 	
 
@@ -48,7 +46,7 @@ end
 	;ASSUME FS:NOTHING  ;bu alanla ilgili kernel32.dll e erişme konusunda ufak bi problem var kernelbase e erişiyor
 	;mov	eax,[fs:30h]
 	;ASSUME FS:ERROR
-	;mov	eax,[eax+0Ch]   ; 0x ifadelerini kaldırınca geçiyor 
+	;mov	eax,[eax+0Ch]    
 	;mov	esi,[eax+1Ch]
-    ;lodsd                   ; 2. yüklenen dll adresini aldık 3.yü alarak deneyeceğiz
+   	;lodsd                	  ; 2. yüklenen dll adresini aldık 3.yü alarak deneyeceğiz
 	;mov	ebx,[eax+08h]
