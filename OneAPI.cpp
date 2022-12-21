@@ -24,13 +24,12 @@ int main()
 	PVOID adres = LoadLibrary(L"Kernel32.dll");
 
 	selamcanim((LPTHREAD_START_ROUTINE)message2, adres);
-	selamcanim((LPTHREAD_START_ROUTINE)message2, adres);
 
-	int k;
-	cin >> k;
-	LPVOID mrb;
-	string asd = "naber";
-	mrb = &asd;
+	//int k;
+	//cin >> k;
+	//LPVOID mrb;
+	//string asd = "naber";
+	//mrb = &asd;
 	//cout << mrb;
 	//cin >> asd;
 	//message(mrb);
